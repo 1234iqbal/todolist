@@ -16,11 +16,9 @@
   <div class="form-group">
     <label for="exampleFormControlSelect1">Kategori Barang</label>
     <select class="form-control" name="kategories" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+      @foreach($kategories as $kategori)
+        <option>{{ $kategori->name }}</option>
+      @endforeach
     </select>
   </div>
   <div class="form-group">

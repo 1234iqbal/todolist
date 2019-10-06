@@ -16,27 +16,39 @@ class BarangController extends Controller
 
     public function add()
     {
-        return view('create_barang');
+        $kategories = Kategories::all();
+
+        return view('create_barang',['kategories' => $kategories]);
     }
 
     public function create(Request $request) 
     {
         $data = new Barang; 
         $data->name = $request->name;
+        $data->kategories = $request->kategories;
         $data->jumlah = $request->jumlah;
         $data->save();
 
         return redirect("/"); 
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return ;
+        $data = Barang::find($id);
+        $kategories = Kategories::all();
+
+        return view('edit',['data'=>$data , 'kategories'=>$kategories ]);
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
-        return ;
+        $data = Barang::find($id);
+        $data->name = $request->name;
+        $data->kategories = $request->kategories;
+        $data->jumlah = $request->jumlah;
+        $data->save();
+
+        return redirect('/');
     }
 
     public function delete($id)
