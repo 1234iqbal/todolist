@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/', 'Api\BarangController@index');
+Route::post('/', 'Api\BarangController@create');
+Route::put('/edit/{id}', 'Api\BarangController@update');
+Route::delete('/delete/{id}', 'Api\BarangController@delete');
